@@ -6,11 +6,11 @@ const StudentsList = () => {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    const result = async () => {
+    const getStudentsList = async () => {
       const { data } = await axios.get('http://localhost:3002/api/students')
       setStudents(data);
     };
-    result()
+    getStudentsList()
   }, [])
 
   const renderedList = students.map(student => {
