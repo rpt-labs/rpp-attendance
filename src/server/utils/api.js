@@ -10,6 +10,28 @@ const getStudents = async () => {
   }
 };
 
+const getCurrentStudents = async () => {
+  const url = 'http://localhost:3000/students/current';
+  try {
+    const response = await axios.get(url)
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+const getStudentsByCohort = async (cohortId) => {
+  const url =`http://localhost:3000/students/cohort/${cohortId}`;
+  try {
+    const response = await axios.get(url)
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};
+
 module.exports = {
-  getStudents
+  getStudents,
+  getCurrentStudents,
+  getStudentsByCohort
 };

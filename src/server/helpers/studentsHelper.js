@@ -1,4 +1,4 @@
-const getStudents = require('../utils/api');
+const { getStudents, getCurrentStudents, getStudentsByCohort}   = require('../utils/api');
 
 const getAllStudents = async() => {
   try {
@@ -10,4 +10,28 @@ const getAllStudents = async() => {
   }
 };
 
-module.exports = getAllStudents;
+const getAllCurrentStudents = async() => {
+  try {
+    const response = await getCurrentStudents();
+    return response;
+  } catch (error) {
+    console.log(`Error fetching students`);
+    return error;
+  }
+};
+
+const getCohortStudents = async(cohortId) => {
+  try {
+    const response = await getStudentsByCohort(cohortId);
+    return response;
+  } catch (error) {
+    console.log(`Error fetching students`);
+    return error;
+  }
+};
+
+module.exports = {
+  getAllStudents,
+  getAllCurrentStudents,
+  getCohortStudents
+};

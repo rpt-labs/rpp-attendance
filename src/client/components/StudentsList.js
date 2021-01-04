@@ -16,7 +16,8 @@ const StudentsList = () => {
   const renderedList = students.map(student => {
     return (
       <Table.Row key={`${student.first_name} ${student.last_name}`}>
-        <Table.Cell>{`${student.first_name} ${student.last_name}`}</Table.Cell>
+        {student.preferred_name && <Table.Cell>{student.preferred_name}</Table.Cell>}
+        {!student.preferred_name && <Table.Cell>{`${student.first_name} ${student.last_name}`}</Table.Cell>}
       </Table.Row>
     )
   })
