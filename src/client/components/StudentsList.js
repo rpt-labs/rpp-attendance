@@ -3,20 +3,22 @@ import axios from 'axios';
 
 const StudentsList = () => {
   const [students, setStudents] = useState([]);
+  const { REACT_APP_BASE_URL } = process.env;
 
   useEffect(() => {
     const getStudentsList = async () => {
-      const { data } = await axios.get('http://localhost:3002/api/students')
+      const { data } = await axios.get(`${REACT_APP_BASE_URL}/api/students`);
       setStudents(data);
     };
     getStudentsList()
-  }, [])
+  }, [REACT_APP_BASE_URL])
 
   const renderedList = students.map(student => {
+    const { preferred_name, first_name, last_name } = student;
     return (
-      <tr key={`${student.first_name} ${student.last_name}`}>
-        {student.preferred_name && <td className="border px-8 py-4">{student.preferred_name}</td>}
-        {!student.preferred_name && <td className="border px-8 py-4">{`${student.first_name} ${student.last_name}`}</td>}
+      <tr key={`${first_name} ${last_name}`}>
+        {preferred_name && <td className="border px-8 py-4">{preferred_name}</td>}
+        {!preferred_name && <td className="border px-8 py-4">{`${first_name} ${last_name}`}</td>}
       </tr>
     )
   })

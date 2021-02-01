@@ -1,7 +1,8 @@
 const axios = require('axios');
+const { BASE_URL } = process.env;
 
 const getStudents = async () => {
-  const url = 'http://localhost:3000/students';
+  const url = `${BASE_URL}/students`;
   try {
     const response = await axios.get(url)
     return response.data;
@@ -11,7 +12,7 @@ const getStudents = async () => {
 };
 
 const getCurrentStudents = async () => {
-  const url = 'http://localhost:3000/students/current';
+  const url = `${BASE_URL}/students/current`;
   try {
     const response = await axios.get(url)
     return response.data;
@@ -21,7 +22,7 @@ const getCurrentStudents = async () => {
 };
 
 const getStudentsByCohort = async (cohortId) => {
-  const url =`http://localhost:3000/students/cohort/${cohortId}`;
+  const url = `${BASE_URL}/students/cohort/${cohortId}`;
   try {
     const response = await axios.get(url)
     return response.data;
