@@ -1,4 +1,4 @@
-import React,  { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const StudentsList = () => {
@@ -24,14 +24,14 @@ const StudentsList = () => {
   })
 
   return (
-    <div className="container">
+    <div className="p-5">
       <table className="shadow-lg bg-white">
-      <thead>
+      <thead className="rounded">
         <tr>
-          <th className="bg-blue-100 border text-left px-8 py-4">Name</th>
+          <th className="bg-primary border text-left px-8 py-4">Name</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="bg-secondary">
         {renderedList}
       </tbody>
       </table>
