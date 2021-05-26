@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Student } from '../api/students'
+import Dropdown from '../../components/Dropdown'
 
 const Students = () => {
   const [students, setStudents] = useState<Student[]>([])
@@ -14,6 +15,10 @@ const Students = () => {
 
   return (
     <>
+      <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow m-12">
+        Select a status
+      </button>
+      <Dropdown />
       <h1 className="m-12 font-medium text-xl">All Students</h1>
       <table className="shadow-lg bg-white m-12">
         <thead>
@@ -39,9 +44,6 @@ const Students = () => {
           })}
         </tbody>
       </table>
-      <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow m-12">
-        Select a status
-      </button>
     </>
   )
 }
